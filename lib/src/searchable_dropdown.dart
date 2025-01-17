@@ -484,7 +484,7 @@ class _DropDown<T> extends StatelessWidget {
     }
     if (controller.items == null) {
       if (paginatedRequest != null) {
-        controller.getItemsWithPaginatedRequest(page: 1, isNewSearch: true);
+        controller.getItemsWithPaginatedRequest(page: 0, isNewSearch: true);
       }
       if (futureRequest != null) controller.getItemsWithFutureRequest();
     } else {
