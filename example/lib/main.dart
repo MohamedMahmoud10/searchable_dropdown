@@ -14,7 +14,23 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  late final dio = Dio();
+  late final dio = Dio()
+    ..interceptors.add(
+      InterceptorsWrapper(
+        onRequest: (options, handler) {
+          debugPrint('Request: ${options.method} ${options.path}');
+          return handler.next(options);
+        },
+        onResponse: (response, handler) {
+          debugPrint('Response: ${response.statusCode}');
+          return handler.next(response);
+        },
+        onError: (DioError e, handler) {
+          debugPrint('Error: ${e.message}');
+          return handler.next(e);
+        },
+      ),
+    );
 
   final SearchableDropdownController<int> searchableDropdownController =
       SearchableDropdownController<int>(

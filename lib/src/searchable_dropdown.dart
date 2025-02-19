@@ -659,7 +659,7 @@ class _DropDownSearchBar<T> extends StatelessWidget {
           }
           controller.getItemsWithPaginatedRequest(
             key: value == '' ? null : value,
-            page: 1,
+            page: 0,
             isNewSearch: true,
           );
         },
