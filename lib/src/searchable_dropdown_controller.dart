@@ -36,7 +36,7 @@ class SearchableDropdownController<T> {
       ValueNotifier<List<SearchableDropdownMenuItem<T>>?>(null);
 
   bool _hasMoreData = true;
-  int _page = 1;
+  int _page = 0;
   int get page => _page;
 
   Future<void> getItemsWithPaginatedRequest({
@@ -46,7 +46,7 @@ class SearchableDropdownController<T> {
   }) async {
     if (paginatedRequest == null) return;
     if (isNewSearch) {
-      _page = 1;
+      _page = 0;
       paginatedItemList.value = null;
       _hasMoreData = true;
     }
